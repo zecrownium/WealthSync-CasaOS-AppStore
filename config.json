@@ -1,0 +1,33 @@
+{
+  "app_info": {
+    "x-casaos": {
+      "architectures": ["amd64", "arm", "arm64"],
+      "main": "wealthsync-app",
+      "author": "Zecrownium",
+      "category": "utility",
+      "description": {"en_us": "Your custom financial synchronization application."},
+      "developer": "Zecrownium",
+      "icon": "https://raw.githubusercontent.com/zecrownium/WealthSync-CasaOS-AppStore/main/Apps/WealthSync/icon.png",
+      "tagline": {"en_us": "Custom-built financial tracker."},
+      "title": {"en_us": "WealthSync"},
+      "index": "/",
+      "port_map": "3000"
+    }
+  },
+  "compose": {
+    "wealthsync-app": {
+      "container_name": "wealthsync-app",
+      "image": "wealthsync-app:latest",
+      "ports": [
+        "8080:3000"
+      ],
+      "environment": [
+        "NODE_ENV=production",
+        "PORT=3000"
+      ],
+      "restart": "unless-stopped",
+      "mem_limit": "1024m",
+      "mem_reservation": "256m"
+    }
+  }
+}
